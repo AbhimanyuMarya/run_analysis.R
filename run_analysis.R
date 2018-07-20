@@ -31,7 +31,7 @@ dataSet <- rbind(training_data,testing_data)
 #-------QUESTION 2
 #in this question it is asked to extract only those measurements which has mean | std in name
 # we have not to find mean or STD seperately
-dataSet=dataSet[grepl("mean|std",colnames(dataSet))]
+dataSet=dataSet[,grepl("mean|std",colnames(dataSet))]
  
 
 #-------QUESTION 3
@@ -43,8 +43,8 @@ library(plyr)
 #first change the name of activuty_labels, for JOIN colnames must be same
 
 colnames(activity_labels)=c("ID","Type")
-(join(dataSet,activity_labels,by="ID"))
-activity_labels$Type
+dataSet=join(dataSet,activity_labels,by="ID")
+
 
 
 
